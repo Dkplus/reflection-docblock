@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<ruleset name="ObjectCalisthenics">
+<ruleset name="PSR2">
     <rule ref="PSR2" />
-    <rule ref="./object-calisthenics.xml" />
 </ruleset>
