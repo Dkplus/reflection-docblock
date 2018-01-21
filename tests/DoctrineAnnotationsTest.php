@@ -16,9 +16,9 @@ use test\Dkplus\Reflection\DocBlock\Fixtures\OneAnnotation;
 use test\Dkplus\Reflection\DocBlock\TestCase\DocBlockTestCase;
 
 /**
- * @covers AnnotationFactory
- * @covers DocBlockVisitor
- * @covers HoaParser
+ * @covers \Dkplus\Reflection\DocBlock\AnnotationFactory
+ * @covers \Dkplus\Reflection\DocBlock\DocBlockVisitor
+ * @covers \Dkplus\Reflection\DocBlock\HoaParser
  */
 class DoctrineAnnotationsTest extends DocBlockTestCase
 {
