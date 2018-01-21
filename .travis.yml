@@ -7,23 +7,24 @@ cache:
     - $HOME/.composer/cache
 
 php:
- - 7.2
- - nightly
+  - 7.2
+  - nightly
 
 env:
   global:
     - EXECUTE_CS_CHECK=false
+    - TEST_COVERAGE=false
   matrix:
     - DEPENDENCIES="--prefer-lowest --prefer-stable"
     - DEPENDENCIES=""
 
 matrix:
   allow_failures:
-   - php: nightly
+    - php: nightly
   fast_finish: true
   include:
     - php: 7.2
-      env: DEPENDENCIES="" EXECUTE_CS_CHECK=true
+      env: DEPENDENCIES="" EXECUTE_CS_CHECK=true TEST_COVERAGE=true
   exclude:
     - php: 7.2
       env: DEPENDENCIES=""
@@ -36,9 +37,13 @@ install:
   - composer info -i
 
 script:
-  - vendor/bin/phpunit
-  - vendor/bin/phpspec run
+  - if [[ $TEST_COVERAGE == 'true' ]]; then php -dzend_extension=xdebug.so vendor/bin/phpspec run -c phpspec.coverage.yml; else vendor/bin/phpspec run; fi
+  - if [[ $TEST_COVERAGE == 'true' ]]; then php -dzend_extension=xdebug.so vendor/bin/phpunit --coverage-php build/coverage/coverage-phpunit.cov; else vendor/bin/phpunit; fi
+  - if [[ $TEST_COVERAGE == 'true' ]]; then php vendor/bin/phpcov merge --clover build/logs/clover.xml --text build/coverage; fi
   - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then vendor/bin/phpstan analyse -l 7 -c phpstan.neon src; fi
   - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then vendor/bin/phpcs --standard=resources/phpcs/specs.xml spec tests; fi
   - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then vendor/bin/phpcs --standard=resources/phpcs/src.xml src; fi
   - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then vendor/bin/phpcs --standard=resources/phpcs/object-calisthenics.xml src; fi
+
+after_success:
+  - if [[ $TEST_COVERAGE == 'true' ]]; then travis_retry php vendor/bin/php-coveralls; fi

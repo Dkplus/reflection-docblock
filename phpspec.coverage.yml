@@ -1,0 +1,12 @@
+suites:
+    dkplus_suite:
+        namespace: Dkplus\Reflection\DocBlock
+        psr4_prefix: Dkplus\Reflection\DocBlock
+extensions:
+    LeanPHP\PhpSpec\CodeCoverage\CodeCoverageExtension:
+    format:
+        - php
+    output:
+        - php: build/coverage/coverage-phpspec.cov
+    whilelist:
+        - src
