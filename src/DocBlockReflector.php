@@ -30,8 +30,7 @@ final class DocBlockReflector
         ClassReflector $classReflector,
         FqsenResolver $fqsenResolver,
         MultiTagAttributeFormatter $attributeFormatter = null
-    )
-    {
+    ) {
         $this->parser = new HoaParser();
         $this->fqsenResolver = $fqsenResolver;
         $this->classReflector = $classReflector;

@@ -34,8 +34,7 @@ final class DocBlockVisitor implements Visit
         Context $context,
         ClassReflector $classReflector,
         FqsenResolver $fqsenResolver
-    )
-    {
+    ) {
         $this->annotationFactory = $factory;
         $this->context = $context;
         $this->classReflector = $classReflector;
@@ -137,7 +136,7 @@ final class DocBlockVisitor implements Visit
         /* @var $child TreeNode */
         foreach ($element->getChildren() as $child) {
             $result = $child->accept($this, $handle, $eldnah);
-            $values += (array) $result; // array_merge won't preserve numeric keys
+            $values += (array)$result; // array_merge won't preserve numeric keys
         }
         return $values;
     }

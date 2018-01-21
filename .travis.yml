@@ -38,7 +38,7 @@ install:
 script:
   - vendor/bin/phpunit
   - vendor/bin/phpspec run
-  - if [[ $EXECUTE_CS_CHECK == 'true' ]]; vendor/bin/phpstan analyse -l 7 -c phpstan.neoun src; fi
+  - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then vendor/bin/phpstan analyse -l 7 -c phpstan.neon src; fi
   - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then vendor/bin/phpcs --standard=resources/phpcs/specs.xml spec tests; fi
-  - if [[ $EXECUTE_CS_CHECK == 'true' ]]; vendor/bin/phpcs --standard=resources/phpcs/src.xml src; fi
-  - if [[ $EXECUTE_CS_CHECK == 'true' ]]; vendor/bin/phpcs --standard=resources/phpcs/object-calisthenics.xml src; fi
+  - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then vendor/bin/phpcs --standard=resources/phpcs/src.xml src; fi
+  - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then vendor/bin/phpcs --standard=resources/phpcs/object-calisthenics.xml src; fi

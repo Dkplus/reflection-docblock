@@ -42,19 +42,17 @@ final class DocBlockReflection
                 $annotations[] = $each;
             }
         }
-        $description = $docBlock->description();
-        if (strlen($description) == 0) {
-            $description = $parent->description();
-        } else {
+        $description = $parent->description();
+        if (strlen($description) !== 0) {
             $description = str_replace(
                 [' {@inheritdoc} ', ' {@inheritdoc}', '{@inheritdoc} ', '{@inheritdoc}'],
                 [
-                    $parent->description() ? ' ' . trim($parent->description()) . ' ' : ' ',
-                    $parent->description() ? trim(' ' . $parent->description()) : ' ',
-                    $parent->description() ? trim($parent->description() . ' ') : ' ',
-                    $parent->description() ? trim($parent->description()) : '',
+                    $description ? ' ' . trim($description) . ' ' : ' ',
+                    $description ? trim(' ' . $description) : ' ',
+                    $description ? trim($description . ' ') : ' ',
+                    $description ? trim($description) : '',
                 ],
-                $description
+                $docBlock->description()
             );
         }
         return new self(
