@@ -7,6 +7,6 @@ extensions:
     format:
       - php
     output:
-      - php: build/coverage/coverage-phpspec.cov
+      php: build/coverage/coverage-phpspec.cov
     whilelist:
       - src
