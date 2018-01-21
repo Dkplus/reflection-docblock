@@ -13,7 +13,6 @@ php:
 env:
   global:
     - EXECUTE_CS_CHECK=false
-    - TEST_COVERAGE=false
   matrix:
     - DEPENDENCIES="--prefer-lowest --prefer-stable"
     - DEPENDENCIES=""
@@ -24,7 +23,7 @@ matrix:
   fast_finish: true
   include:
     - php: 7.2
-      env: DEPENDENCIES="" EXECUTE_CS_CHECK=true TEST_COVERAGE=true
+      env: DEPENDENCIES="" EXECUTE_CS_CHECK=true
   exclude:
     - php: 7.2
       env: DEPENDENCIES=""
@@ -39,7 +38,7 @@ install:
 script:
   - vendor/bin/phpunit
   - vendor/bin/phpspec run
-  - vendor/bin/phpstan analyse -l 7 -c phpstan.neoun src
-  - vendor/bin/phpcs --standard=resources/phpcs/specs.xml spec tests
-  - vendor/bin/phpcs --standard=resources/phpcs/src.xml src
-  - vendor/bin/phpcs --standard=resources/phpcs/object-calisthenics.xml src
+  - if [[ $EXECUTE_CS_CHECK == 'true' ]]; vendor/bin/phpstan analyse -l 7 -c phpstan.neoun src; fi
+  - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then vendor/bin/phpcs --standard=resources/phpcs/specs.xml spec tests; fi
+  - if [[ $EXECUTE_CS_CHECK == 'true' ]]; vendor/bin/phpcs --standard=resources/phpcs/src.xml src; fi
+  - if [[ $EXECUTE_CS_CHECK == 'true' ]]; vendor/bin/phpcs --standard=resources/phpcs/object-calisthenics.xml src; fi
