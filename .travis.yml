@@ -39,7 +39,7 @@ install:
 script:
   - if [[ $TEST_COVERAGE == 'true' ]]; then php -dzend_extension=xdebug.so vendor/bin/phpspec run -c phpspec.coverage.yml; else vendor/bin/phpspec run; fi
   - if [[ $TEST_COVERAGE == 'true' ]]; then php -dzend_extension=xdebug.so vendor/bin/phpunit --coverage-php build/coverage/coverage-phpunit.cov; else vendor/bin/phpunit; fi
-  - if [[ $TEST_COVERAGE == 'true' ]]; then php vendor/bin/phpcov merge --clover build/logs/clover.xml --text build/coverage; fi
+  - if [[ $TEST_COVERAGE == 'true' ]]; then php -dzend_extension=xdebug.so vendor/bin/phpcov merge --clover build/logs/clover.xml --text build/coverage; fi
   - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then vendor/bin/phpstan analyse -l 7 -c phpstan.neon src; fi
   - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then vendor/bin/phpcs --standard=resources/phpcs/specs.xml spec tests; fi
   - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then vendor/bin/phpcs --standard=resources/phpcs/src.xml src; fi
