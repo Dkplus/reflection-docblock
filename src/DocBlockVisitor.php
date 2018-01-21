@@ -137,7 +137,7 @@ final class DocBlockVisitor implements Visit
         /* @var $child TreeNode */
         foreach ($element->getChildren() as $child) {
             $result = $child->accept($this, $handle, $eldnah);
-            $values = ((array)$values) + ((array)$result); // array_merge won't preserve numeric keys
+            $values += (array) $result; // array_merge won't preserve numeric keys
         }
         return $values;
     }

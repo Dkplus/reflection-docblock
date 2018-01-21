@@ -44,7 +44,11 @@ final class AnnotationFactory
             $annotationClassName = (string) $this->fqsenResolver->resolve($tag, $context);
             $reflection = $this->classReflector->reflect($annotationClassName); // check whether fully qualified
             $inherited = $this->reflectAnnotationsFromClass($reflection);
-            return AnnotationReflection::fullyQualified($annotationClassName, $attributes, ...$inherited);
+            return AnnotationReflection::fullyQualified(
+                $annotationClassName,
+                $attributes,
+                ...iterator_to_array($inherited)
+            );
         } catch (InvalidArgumentException $exception) {
         } catch (ReflectionException $exception) {
         }

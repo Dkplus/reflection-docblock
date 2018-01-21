@@ -23,7 +23,7 @@ class Annotations extends IteratorIterator implements Countable
         $this->annotations = $annotations;
     }
 
-    /** @return AnnotationReflection|false */
+    /** @return AnnotationReflection */
     public function current()
     {
         return parent::current();

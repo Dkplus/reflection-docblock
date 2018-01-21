@@ -54,7 +54,7 @@ final class DocBlockReflector
         if (!method_exists($reflector, 'getDocComment')) {
             throw new InvalidArgumentException('Class ' . get_class($reflector) . ' provides no doc comment');
         }
-        $docBlock = $this->reflectDocBlock((string)$reflector->getDocComment(), $context);
+        $docBlock = $this->reflectDocBlock((string) $reflector->getDocComment(), $context);
         if ($reflector instanceof ReflectionClass && $reflector->getParentClass() instanceof Reflector) {
             $parentDocBlock = $this->reflectDocBlockOf($reflector->getParentClass());
             $docBlock = DocBlockReflection::inherit($docBlock, $parentDocBlock);
