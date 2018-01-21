@@ -34,11 +34,9 @@ final class DocBlockReflection
         $inheritAnnotations = array_filter($inheritAnnotations);
         $inheritAnnotations = array_keys($inheritAnnotations);
         foreach ($parent->annotations() as $each) {
-            if (in_array($each->tag(), $inheritAnnotations)) {
-                $annotations[] = $each;
-                continue;
-            }
-            if ($each->tag() === 'subpackage' && in_array('package', $inheritAnnotations)) {
+            if (in_array($each->tag(), $inheritAnnotations)
+                || ($each->tag() === 'subpackage' && in_array('package', $inheritAnnotations, true))
+            ) {
                 $annotations[] = $each;
             }
         }
