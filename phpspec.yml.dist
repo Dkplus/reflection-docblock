@@ -1,4 +1,4 @@
 suites:
-    dkplus_suite:
-        namespace: Dkplus\Reflection\DocBlock
-        psr4_prefix: Dkplus\Reflection\DocBlock
+  dkplus_suite:
+    namespace: Dkplus\Reflection\DocBlock
+    psr4_prefix: Dkplus\Reflection\DocBlock
