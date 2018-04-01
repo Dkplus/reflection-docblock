@@ -53,8 +53,6 @@ class FqsenAttributeFormatterSpec extends ObjectBehavior
 
         $decorated->format($passedAttributes, $context)->willReturn($attributesAfterDecorated);
 
-        $this
-            ->format($passedAttributes, $context)
-            ->shouldBeLike($attributesAfterDecorated);
+        $this->format($passedAttributes, $context)->shouldBeLike($attributesAfterDecorated);
     }
 }

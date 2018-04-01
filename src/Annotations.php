@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Dkplus\Reflection\DocBlock;
 
+use function array_filter;
 use ArrayIterator;
 use Countable;
 use Dkplus\Reflection\DocBlock\Exception\MissingAnnotation;
@@ -59,6 +60,11 @@ class Annotations extends IteratorIterator implements Countable
     public function map(callable $callable): array
     {
         return array_map($callable, $this->annotations);
+    }
+
+    public function filter(callable $callable): self
+    {
+        return new self(...array_filter($this->annotations, $callable));
     }
 
     public function merge(self ...$annotations): self

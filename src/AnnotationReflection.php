@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Dkplus\Reflection\DocBlock;
 
 use function array_map;
+use Doctrine\Common\Annotations\Annotation;
 use function is_array;
 use function json_encode;
 

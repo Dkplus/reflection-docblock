@@ -24,7 +24,7 @@ class MultiTagAttributeFormatter
         $typeResolver = new TypeResolver($fqsenResolver);
         $justDescription = new NamedAttributeFormatter('description');
         return new self([
-            'author' => new RegexAttributeFormatter('/(?P<name>[^<]+)(?:<(?P<emailaddress>[^>]+)>)?/'),
+            'author' => new RegexAttributeFormatter('/(?P<name>[^<]+)(?:<(?P<emailAddress>[^>]+)>)?/'),
             'copyright' => $justDescription,
             'deprecated' => new RegexAttributeFormatter(
                 '/(?P<version>\d+\.\d+.\d+)\s*(?P<description>.*)/',
