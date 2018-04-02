@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace spec\Dkplus\Reflection\DocBlock\AttributeFormatter;
+namespace spec\Dkplus\Reflection\DocBlock\AttributeFormatter\Generic;
 
 use Dkplus\Reflection\DocBlock\AttributeFormatter;
-use Dkplus\Reflection\DocBlock\AttributeFormatter\NamedAttributeFormatter;
+use Dkplus\Reflection\DocBlock\AttributeFormatter\Generic\NamedAttributeFormatter;
 use phpDocumentor\Reflection\Types\Context;
 use PhpSpec\ObjectBehavior;
 

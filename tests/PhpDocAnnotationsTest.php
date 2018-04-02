@@ -19,6 +19,8 @@ use test\Dkplus\Reflection\DocBlock\TestCase\DocBlockTestCase;
 
 /**
  * @covers \Dkplus\Reflection\DocBlock\AnnotationFactory
+ * @covers \Dkplus\Reflection\DocBlock\DocBlockReflection
+ * @covers \Dkplus\Reflection\DocBlock\DocBlockReflector
  * @covers \Dkplus\Reflection\DocBlock\DocBlockVisitor
  * @covers \Dkplus\Reflection\DocBlock\HoaParser
  */
@@ -47,7 +49,7 @@ class PhpDocAnnotationsTest extends DocBlockTestCase
     {
         return [
             'author' => ['author', ['name' => 'My Name']],
-            'author with email' => ['author', ['name' => 'My Name', 'emailaddress' => 'my.name@example.com']],
+            'author with email' => ['author', ['name' => 'My Name', 'emailAddress' => 'my.name@example.com']],
             'copyright' => ['copyright', ['description' => '2017-2018 by some company']],
             'deprecated' => ['deprecated', ['description' => '']],
             'deprecated with version' => ['deprecated', ['version' => '1.0.0', 'description' => '']],

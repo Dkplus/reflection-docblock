@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Dkplus\Reflection\DocBlock;
 
+use Dkplus\Reflection\DocBlock\AttributeFormatter\MultiTag\OneFormatterPerTagAttributeFormatter;
 use InvalidArgumentException;
 use phpDocumentor\Reflection\FqsenResolver;
 use phpDocumentor\Reflection\Types\Context;
@@ -21,9 +22,8 @@ final class AnnotationFactory
 
     /** @var MultiTagAttributeFormatter */
     private $attributeFormatter;
-    /**
-     * @var DocBlockReflector
-     */
+
+    /** @var DocBlockReflector */
     private $docBlockReflector;
 
     public function __construct(
@@ -35,7 +35,7 @@ final class AnnotationFactory
         $this->classReflector = $classReflector;
         $this->docBlockReflector = $docBlockReflector;
         $this->fqsenResolver = $fqsenResolver;
-        $this->attributeFormatter = $attributeFormatter ?? MultiTagAttributeFormatter::forDefaultTags();
+        $this->attributeFormatter = $attributeFormatter ?? OneFormatterPerTagAttributeFormatter::forDefaultTags();
     }
 
     public function createReflection(string $tag, array $attributes, Context $context): AnnotationReflection

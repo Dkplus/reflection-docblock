@@ -17,6 +17,8 @@ use test\Dkplus\Reflection\DocBlock\TestCase\DocBlockTestCase;
 
 /**
  * @covers \Dkplus\Reflection\DocBlock\AnnotationFactory
+ * @covers \Dkplus\Reflection\DocBlock\DocBlockReflection
+ * @covers \Dkplus\Reflection\DocBlock\DocBlockReflector
  * @covers \Dkplus\Reflection\DocBlock\DocBlockVisitor
  * @covers \Dkplus\Reflection\DocBlock\HoaParser
  */

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace spec\Dkplus\Reflection\DocBlock\AttributeFormatter;
+namespace spec\Dkplus\Reflection\DocBlock\AttributeFormatter\Generic;
 
 use Dkplus\Reflection\DocBlock\AttributeFormatter;
-use Dkplus\Reflection\DocBlock\AttributeFormatter\TypeAttributeFormatter;
+use Dkplus\Reflection\DocBlock\AttributeFormatter\Generic\TypeAttributeFormatter;
 use phpDocumentor\Reflection\TypeResolver;
 use phpDocumentor\Reflection\Types\Context;
 use phpDocumentor\Reflection\Types\Integer;

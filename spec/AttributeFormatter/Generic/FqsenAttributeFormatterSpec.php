@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace spec\Dkplus\Reflection\DocBlock\AttributeFormatter;
+namespace spec\Dkplus\Reflection\DocBlock\AttributeFormatter\Generic;
 
 use Dkplus\Reflection\DocBlock\AttributeFormatter;
-use Dkplus\Reflection\DocBlock\AttributeFormatter\FqsenAttributeFormatter;
+use Dkplus\Reflection\DocBlock\AttributeFormatter\Generic\FqsenAttributeFormatter;
 use phpDocumentor\Reflection\Fqsen;
 use phpDocumentor\Reflection\FqsenResolver;
 use phpDocumentor\Reflection\Types\Context;

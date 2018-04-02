@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Dkplus\Reflection\DocBlock;
 
+use Dkplus\Reflection\DocBlock\AttributeFormatter\MultiTag\OneFormatterPerTagAttributeFormatter;
 use InvalidArgumentException;
 use phpDocumentor\Reflection\FqsenResolver;
 use phpDocumentor\Reflection\Types\Context;
@@ -29,7 +30,7 @@ final class DocBlockReflector
     public function __construct(
         ClassReflector $classReflector,
         FqsenResolver $fqsenResolver,
-        MultiTagAttributeFormatter $attributeFormatter = null
+        OneFormatterPerTagAttributeFormatter $attributeFormatter = null
     ) {
         $this->parser = new HoaParser();
         $this->fqsenResolver = $fqsenResolver;

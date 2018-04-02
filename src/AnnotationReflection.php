@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Dkplus\Reflection\DocBlock;
 
 use function array_map;
-use Doctrine\Common\Annotations\Annotation;
 use function is_array;
 use function json_encode;
 
@@ -22,11 +21,11 @@ final class AnnotationReflection
     /** @var Annotations */
     private $immediatelyAttached;
 
-    private static function toString(array $data): string
+    private static function attributesToString(array $data): string
     {
         $strings = array_map(function ($attribute) {
             if (is_array($attribute)) {
-                return self::toString($attribute);
+                return self::attributesToString($attribute);
             }
             return (string) $attribute;
         }, $data);
@@ -48,11 +47,11 @@ final class AnnotationReflection
         return new self($tag, $attributes, new Annotations());
     }
 
-    private function __construct(string $tag, array $attributes, Annotations $immediatelyInherited)
+    private function __construct(string $tag, array $attributes, Annotations $immediatelyAttached)
     {
         $this->tag = $tag;
         $this->attributes = $attributes;
-        $this->immediatelyAttached = $immediatelyInherited;
+        $this->immediatelyAttached = $immediatelyAttached;
     }
 
     public function tag(): string
@@ -83,6 +82,7 @@ final class AnnotationReflection
         $inherited = $this->attached()->map(function (AnnotationReflection $reflection) {
             return (string) $reflection;
         });
-        return '@' . $this->tag . '(' . self::toString($this->attributes) . '): ' . self::toString($inherited);
+        return '@' . $this->tag
+            . '(' . self::attributesToString($this->attributes) . '): ' . self::attributesToString($inherited);
     }
 }

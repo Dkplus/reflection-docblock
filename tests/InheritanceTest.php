@@ -15,6 +15,8 @@ use test\Dkplus\Reflection\DocBlock\TestCase\DocBlockTestCase;
 
 /**
  * @covers \Dkplus\Reflection\DocBlock\AnnotationFactory
+ * @covers \Dkplus\Reflection\DocBlock\DocBlockReflection
+ * @covers \Dkplus\Reflection\DocBlock\DocBlockReflector
  * @covers \Dkplus\Reflection\DocBlock\DocBlockVisitor
  * @covers \Dkplus\Reflection\DocBlock\HoaParser
  */
@@ -104,7 +106,7 @@ class InheritanceTest extends DocBlockTestCase
         $overwrites = $this->reflector->reflectDocBlockOf(new ReflectionClass(ClassThatDoesNotInherit::class));
 
         self::assertDocBlockHasTag('version', $inherits);
-        self::assertDocBlockHasAnnotationWithTagAndAttributes('version', ['description' => '2.1'], $overwrites);
+        self::assertDocBlockHasAnnotationWithTagAndAttributes('version', ['vector' => '2.1', 'description' => ''], $overwrites);
     }
 
     /** @test */
